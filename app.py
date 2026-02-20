@@ -49,7 +49,11 @@ st.checkbox("I agree to the terms and conditions", key="checkbox_input")
 
 
 # Matplotlib Integration
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots()
-ax.plot([1, 2, 3, 4], [1, 4, 9, 16])
-st.pyplot(fig)
+# Matplotlib Integration (safe version)
+try:
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots()
+    ax.plot([1, 2, 3, 4], [1, 4, 9, 16])
+    st.pyplot(fig)
+except ModuleNotFoundError:
+    st.warning("Matplotlib is not installed. Chart cannot be displayed.")
